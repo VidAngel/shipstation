@@ -45,6 +45,9 @@ defmodule Shipstation.RequestLimit do
   This function lets us set the rate information we're getting back from the API
   """
   @spec set_api_rate({atom, HTTPoison.Response.t}) :: any
+  def set_api_rate({:error, _}) do
+    nil
+  end
   def set_api_rate({_, %HTTPoison.Response{headers: headers}}) do
     headers   = Enum.into(headers, %{})
     {limit, _}     = Integer.parse(Map.get(headers, "X-Rate-Limit-Limit", "40"))

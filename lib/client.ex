@@ -69,7 +69,7 @@ defmodule Shipstation.Client do
 
     uri = %{uri | query: params} |> URI.parse
 
-    resp = get(uri, headers)
+    resp = get(uri, headers, httpoison_request_options())
 
     Shipstation.RequestLimit.set_api_rate(resp)
     handle_response(resp)
@@ -87,7 +87,7 @@ defmodule Shipstation.Client do
       |> Poison.encode!
     headers = default_headers() ++ auth() ++ custom_headers
 
-    resp = request(verb, uri, payload, headers)
+    resp = request(verb, uri, payload, headers, httpoison_request_options())
 
     Shipstation.RequestLimit.set_api_rate(resp)
     handle_response(resp)
@@ -112,4 +112,7 @@ defmodule Shipstation.Client do
     end
   end
 
+  defp httpoison_request_options() do
+    Application.get_env(:shipstation, :httpoison_options, [])
+  end
 end

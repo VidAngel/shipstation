@@ -12,7 +12,11 @@ config :shipstation,
   auth: %{
     api_key: nil,
     api_secret: nil
-  }
+  },
+  httpoison_options: [
+    timeout: 8000,
+    recv_timeout: 30000
+  ]
 
 config :logger, :console,
   format: "$time $metadata[$level] $levelpad$message\n",
