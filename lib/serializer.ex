@@ -94,7 +94,7 @@ defmodule Shipstation.Serializer do
     |> Map.from_struct
     |> Enum.filter(fn({_key, value}) -> not is_nil(value) end)
     |> Enum.map(
-      fn(item = {key, value}) ->
+      fn({key, value}) ->
         # Map
         cond do
           is_map(value) or is_list(value) ->
