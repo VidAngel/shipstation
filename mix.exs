@@ -51,13 +51,13 @@ defmodule Shipstation.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "~> 0.11.0"},
-      {:poison, "~> 2.0"},
-      {:exvcr, "~> 0.8", only: :test},
-      {:credo, "~> 0.7", only: [:dev, :test]},
-      {:dialyxir, "~> 0.4", only: [:dev], runtime: false},
-      {:ex_doc, "~> 0.14", only: :dev},
-      {:eliver, "~> 1.0.0", only: :dev},
+      {:httpoison, "~> 1.0"},
+      {:poison, "~> 3.0"},
+      {:exvcr, "~> 0.10", only: :test},
+      {:credo, "~> 1.1", only: [:dev, :test]},
+      {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
+      {:ex_doc, "~> 0.20", only: :dev},
+      {:eliver, "~> 2.0", only: :dev},
       {:timex, "~> 3.1"}
     ]
   end
