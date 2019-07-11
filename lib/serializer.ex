@@ -92,8 +92,8 @@ defmodule Shipstation.Serializer do
   def do_deep_consolidate(body) when is_map(body) do
     body
     |> Map.from_struct
-    |> Enum.filter_map(
-      fn({key, value}) -> not is_nil(value) end,
+    |> Enum.filter(fn({_key, value}) -> not is_nil(value) end)
+    |> Enum.map(
       fn(item = {key, value}) ->
         # Map
         cond do
