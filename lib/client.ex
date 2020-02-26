@@ -36,7 +36,12 @@ defmodule Shipstation.Client do
   """
   @spec auth() :: [{:basic_auth, {String.t, String.t}}] | []
   def auth do
-    case Application.get_env(:shipstation, :auth) do
+    configs =
+      :shipstation
+      |> Application.get_env(:auth)
+      |> Enum.into(%{})
+
+    case configs do
       %{api_key: nil} -> []
       %{api_secret: nil} -> []
       %{api_key: key, api_secret: secret} ->
