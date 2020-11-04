@@ -3,6 +3,7 @@ defmodule Shipstation.Structs.ShipmentFilter do
   This struct is used when searching for shipments
   """
   @type t :: %Shipstation.Structs.ShipmentFilter{
+    batchId: String.t,
     recipientName: String.t,
     recipientCountryCode: String.t,
     orderNumber: String.t,
@@ -19,11 +20,13 @@ defmodule Shipstation.Structs.ShipmentFilter do
     includeShipmentItems: boolean,
     sortBy: String.t,
     sortDir: String.t,
+    storeId: String.t,
     page: non_neg_integer,
     pageSize: non_neg_integer
   }
 
-  defstruct recipientName: nil,
+  defstruct batchId: nil,
+            recipientName: nil,
             recipientCountryCode: nil,
             orderNumber: nil,
             orderId: nil,
@@ -39,6 +42,7 @@ defmodule Shipstation.Structs.ShipmentFilter do
             includeShipmentItems: false,
             sortBy: nil,
             sortDir: nil,
+            storeId: nil,
             page: 1,
             pageSize: 100
 
